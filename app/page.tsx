@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { PenTool, Share2, Video, TrendingUp, Users, FileText, ShieldCheck, Image as ImageIcon, Target, Code, CreditCard, BookOpen, X } from 'lucide-react';
+import { PenTool, Share2, Video, TrendingUp, Users, FileText, ShieldCheck, Image as ImageIcon, Target, Code, CreditCard, BookOpen, X, Star, Quote, ChevronDown, ChevronUp } from 'lucide-react';
 
 type PortfolioItem = {
   id: number;
@@ -15,6 +15,7 @@ type PortfolioItem = {
 
 export default function Home() {
   const [selectedWork, setSelectedWork] = useState<PortfolioItem | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 40 },
@@ -52,6 +53,23 @@ export default function Home() {
     { id: 5, type: 'image', src: '/post2.png', alt: 'Integrated Strategy', label: 'Integrated Brand Strategy 🚀' },
     { id: 6, type: 'video', src: '/video2.mp4', alt: 'SEO Dashboard', label: 'SEO & Dashboard Analytics 📈' },
   ];
+
+  const testimonials = [
+    { name: "Rahul S.", role: "E-commerce Founder", text: "Startup Sathi entirely transformed our digital presence. Within two months of their growth plan, our Instagram engagement skyrocketed." },
+    { name: "Priya M.", role: "Local Business Owner", text: "The brand identity and logo they designed for us was absolutely premium. They understand modern aesthetics better than anyone." },
+    { name: "Amit K.", role: "Tech Startup CEO", text: "Highly professional and data-driven. Their video editing and reel strategies gave us the viral push we desperately needed." }
+  ];
+
+  const faqs = [
+    { question: "Do I have to sign a long-term contract?", answer: "Not at all. We believe in earning your business every single month. All our standard growth and premium plans operate on a flexible, month-to-month basis." },
+    { question: "How long does it take to see results?", answer: "While visual branding (logos, website) provides an immediate facelift, organic social media growth and SEO typically take 3 to 6 weeks to show compounding, measurable data improvements." },
+    { question: "Can I customize a package?", answer: "Absolutely! The packages above are our most popular, but we can easily mix and match capabilities (like adding a website to the Growth Plan) to create a bespoke blueprint for your exact needs." },
+    { question: "Who will be managing my accounts?", answer: "You will be assigned a dedicated account manager from our core team who will handle your daily strategy, ensuring your brand voice remains consistent across all platforms." }
+  ];
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-red-500 selection:text-white overflow-hidden">
@@ -100,7 +118,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* NAVIGATION - UPGRADED FROSTED GLASS */}
+      {/* NAVIGATION - FROSTED GLASS */}
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -128,9 +146,8 @@ export default function Home() {
         </a>
       </motion.nav>
 
-      {/* HERO SECTION - UPGRADED WITH ARCHITECT GRID */}
+      {/* HERO SECTION - ARCHITECT'S GRID */}
       <section className="relative pt-48 pb-20 px-6 overflow-hidden">
-        {/* Subtle Background Grid */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10" />
         
         <div className="max-w-7xl mx-auto text-center flex flex-col items-center relative z-10">
@@ -171,7 +188,6 @@ export default function Home() {
       {/* CAPABILITIES SECTION */}
       <section id="services" className="py-32 bg-white border-y border-slate-200 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
-          
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
             className="max-w-3xl mb-20"
@@ -198,7 +214,6 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-
         </div>
       </section>
 
@@ -213,7 +228,7 @@ export default function Home() {
               <h3 className="text-sm font-bold tracking-widest uppercase text-red-500 mb-3">Our Portfolio</h3>
               <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">Proof of Performance.</h2>
             </div>
-            <a href="https://instagram.com/startupsaathi" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 font-bold flex items-center gap-2 transition-colors">
+            <a href="https://www.instagram.com/startupsathi.co?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 font-bold flex items-center gap-2 transition-colors">
               View all on Instagram <span>→</span>
             </a>
           </motion.div>
@@ -241,6 +256,38 @@ export default function Home() {
                   <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-sm shadow-xl flex items-center gap-2">
                     {item.label}
                   </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS SECTION */}
+      <section className="py-32 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h3 className="text-3xl font-bold mb-4 text-slate-900">Client Success</h3>
+            <p className="text-slate-600">Don't just take our word for it.</p>
+          </motion.div>
+
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {testimonials.map((test, i) => (
+              <motion.div key={i} variants={fadeInUp} className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm relative group hover:shadow-xl transition-shadow duration-300">
+                <Quote className="w-10 h-10 text-red-100 absolute top-6 right-6 group-hover:text-red-200 transition-colors duration-300" />
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-red-500 text-red-500" />)}
+                </div>
+                <p className="text-slate-700 text-lg leading-relaxed mb-8 relative z-10 italic">"{test.text}"</p>
+                <div>
+                  <h4 className="font-bold text-slate-900">{test.name}</h4>
+                  <p className="text-sm text-slate-500">{test.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -285,7 +332,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Growth Plan - Highlighted */}
+            {/* Growth Plan */}
             <motion.div variants={fadeInUp} className="h-full md:-translate-y-4">
               <motion.div 
                 animate={{ x: [0, -8, 0, 8, 0], y: [0, 8, 0, -8, 0] }}
@@ -349,7 +396,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTACT / CTA SECTION - GOOGLE FORM INTEGRATION */}
+      {/* FAQ SECTION */}
+      <section className="py-24 bg-white border-y border-slate-200">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h3 className="text-3xl font-bold mb-4 text-slate-900">Frequently Asked Questions</h3>
+            <p className="text-slate-600">Everything you need to know before we begin.</p>
+          </motion.div>
+
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+            className="space-y-4"
+          >
+            {faqs.map((faq, index) => (
+              <motion.div key={index} variants={fadeInUp} className="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50">
+                <button 
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                >
+                  <span className="font-bold text-slate-900 text-lg">{faq.question}</span>
+                  {openFaq === index ? <ChevronUp className="w-5 h-5 text-red-500" /> : <ChevronDown className="w-5 h-5 text-slate-400" />}
+                </button>
+                <AnimatePresence>
+                  {openFaq === index && (
+                    <motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CONTACT / CTA SECTION */}
       <section id="contact" className="py-24 px-6 bg-red-600 text-white">
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-3xl mx-auto text-center">
@@ -358,7 +449,6 @@ export default function Home() {
               Let's discuss your business goals and explore how we can help your brand grow digitally.
             </p>
             
-            {/* Google Form Container */}
             <div className="bg-white rounded-3xl overflow-hidden shadow-2xl shadow-red-900/50 w-full h-[700px] md:h-[800px] flex justify-center">
               <iframe 
                 src="https://docs.google.com/forms/d/e/1FAIpQLScn4Yc_CteEYr-96u5V9JPrG-xrzCfKMWa-ZVECa_Hhl6qAiw/viewform?embedded=true" 
@@ -373,7 +463,6 @@ export default function Home() {
                 Loading…
               </iframe>
             </div>
-            
           </motion.div>
         </div>
       </section>
@@ -385,7 +474,7 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-6">
               <Image src="/logo.png" alt="Startup Sathi Logo" width={36} height={36} className="rounded-xl shadow-sm" />
               <span className="text-2xl font-extrabold tracking-tighter text-white">
-                Startup<span className="text-red-500">Sathi</span>
+                Startup<span className="text-red-600">Sathi</span>
               </span>
             </div>
             <p className="text-slate-500 leading-relaxed max-w-md">
@@ -405,7 +494,7 @@ export default function Home() {
           <div>
             <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Connect</h4>
             <ul className="space-y-4 font-medium text-sm">
-              <li><a href="#" className="hover:text-red-400 transition-colors flex items-center gap-2">Instagram ↗</a></li>
+              <li><a href="https://www.instagram.com/startupsathi.co?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors flex items-center gap-2">Instagram ↗</a></li>
               <li><a href="#" className="hover:text-red-400 transition-colors flex items-center gap-2">LinkedIn ↗</a></li>
               <li><a href="#" className="hover:text-red-400 transition-colors flex items-center gap-2">Twitter ↗</a></li>
             </ul>
