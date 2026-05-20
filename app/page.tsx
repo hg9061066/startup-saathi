@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
+import { PenTool, Share2, Video, TrendingUp, Users, FileText, ShieldCheck, Image as ImageIcon, Target, Code, CreditCard, BookOpen } from 'lucide-react';
 
 export default function Home() {
   // Reusable animation variants strongly typed for TypeScript
@@ -18,6 +19,21 @@ export default function Home() {
       transition: { staggerChildren: 0.15 }
     }
   };
+
+  const services = [
+    { title: "Logo & Brand Identity", icon: <PenTool className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Social Media Management", icon: <Share2 className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Reels & Video Editing", icon: <Video className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Digital Marketing", icon: <TrendingUp className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Instagram Growth", icon: <Users className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Business Registration", icon: <FileText className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Account Management", icon: <ShieldCheck className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Creative Post Designing", icon: <ImageIcon className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Paid Ads & Campaigns", icon: <Target className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Website Development", icon: <Code className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Visiting Card Design", icon: <CreditCard className="w-6 h-6 stroke-[1.5]" /> },
+    { title: "Menu & Brochure Design", icon: <BookOpen className="w-6 h-6 stroke-[1.5]" /> }
+  ];
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-red-500 selection:text-white overflow-hidden">
@@ -39,6 +55,7 @@ export default function Home() {
           
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
             <a href="#services" className="hover:text-red-600 transition-colors">Services</a>
+            <a href="#portfolio" className="hover:text-red-600 transition-colors">Portfolio</a>
             <a href="#pricing" className="hover:text-red-600 transition-colors">Pricing</a>
             <a href="#contact" className="hover:text-red-600 transition-colors">Contact</a>
           </div>
@@ -78,130 +95,215 @@ export default function Home() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           href="#contact" 
-          className="bg-red-600 text-white hover:bg-red-700 px-8 py-4 rounded-full font-bold text-lg transition-colors shadow-xl shadow-red-600/20 flex items-center gap-2"
+          className="relative z-10 bg-red-600 text-white hover:bg-red-700 px-8 py-4 rounded-full font-bold text-lg transition-colors shadow-xl shadow-red-600/20 flex items-center gap-2"
         >
-          DM "START" 🚀
+          Let's Talk 🚀
         </motion.a>
       </section>
 
-      {/* SERVICES SECTION */}
-      <section id="services" className="py-24 bg-white border-y border-slate-200">
+      {/* CAPABILITIES SECTION */}
+      <section id="services" className="py-32 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
+          
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
-            className="text-center mb-16"
+            className="max-w-3xl mb-20"
           >
-            <h3 className="text-3xl font-bold mb-4 text-slate-900">Our Services</h3>
-            <p className="text-slate-600">Everything you need to create a strong online presence.</p>
+            <h3 className="text-sm font-bold tracking-widest uppercase text-red-600 mb-3">Capabilities</h3>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Everything you need to scale.</h2>
+            <p className="text-lg text-slate-600 leading-relaxed">
+              From foundational branding to high-converting performance marketing, we architect digital experiences that drive measurable growth.
+            </p>
           </motion.div>
           
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
-            {[
-              "Logo Design & Brand Identity", "Social Media Management", "Reels & Content Creation", 
-              "Digital Marketing", "Instagram Growth", "Business Registration", 
-              "Account Management", "Creative Post Designing", "Ad Campaign Management", "Website Setup"
-            ].map((service, i) => (
-              <motion.div 
-                key={i} variants={fadeInUp}
-                className="p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:border-red-500 hover:shadow-md transition-all group"
-              >
-                <div className="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110">
-                  <span className="text-xl">✨</span>
+            {services.map((service, i) => (
+              <motion.div key={i} variants={fadeInUp} className="h-full">
+                <div className="group h-full p-8 bg-white border border-slate-200 rounded-[2rem] hover:border-red-200 hover:shadow-[0_20px_40px_-15px_rgba(220,38,38,0.1)] transition-all duration-500 ease-out cursor-pointer hover:-translate-y-2 flex flex-col items-start text-left">
+                  <div className="w-14 h-14 bg-slate-50 border border-slate-100 text-slate-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white transition-all duration-500">
+                    {service.icon}
+                  </div>
+                  <h4 className="text-[1.1rem] font-bold text-slate-900 leading-tight">{service.title}</h4>
                 </div>
-                <h4 className="font-bold text-lg text-slate-800">{service}</h4>
               </motion.div>
             ))}
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* FEATURED WORK SECTION */}
+      <section id="portfolio" className="py-32 bg-slate-950 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
+            className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+          >
+            <div className="max-w-2xl">
+              <h3 className="text-sm font-bold tracking-widest uppercase text-red-500 mb-3">Our Portfolio</h3>
+              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">Proof of Performance.</h2>
+            </div>
+            <a href="https://instagram.com/startupsaathi" target="_blank" rel="noopener noreferrer" className="text-red-400 hover:text-red-300 font-bold flex items-center gap-2 transition-colors">
+              View all on Instagram <span>→</span>
+            </a>
+          </motion.div>
+
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {/* Item 1: Auto-playing Video */}
+            <motion.div variants={fadeInUp} className="group relative aspect-square rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl cursor-pointer">
+              <video autoPlay loop muted playsInline className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <source src="/video1.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-sm shadow-xl">
+                  Social Growth Visualization ✨
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Item 2: Static Post */}
+            <motion.div variants={fadeInUp} className="group relative aspect-square rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl cursor-pointer">
+              <Image src="/post1.png" alt="Digital Presence Strategy" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-sm shadow-xl">
+                  Digital Authority Audit 🔍
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Item 3: Static Post */}
+            <motion.div variants={fadeInUp} className="group relative aspect-square rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl cursor-pointer">
+              <Image src="/post3.png" alt="Creative Design Concept" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-sm shadow-xl">
+                  Creative Branding Concepts 🎨
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Item 4: Static Post */}
+            <motion.div variants={fadeInUp} className="group relative aspect-square rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl cursor-pointer">
+              <Image src="/post4.png" alt="Viral Marketing Content" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-sm shadow-xl">
+                  Viral Content Creation 🦖
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Item 5: Static Post */}
+            <motion.div variants={fadeInUp} className="group relative aspect-square rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl cursor-pointer">
+              <Image src="/post2.png" alt="Integrated Strategy" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-sm shadow-xl">
+                  Integrated Brand Strategy 🚀
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Item 6: Auto-playing Video */}
+            <motion.div variants={fadeInUp} className="group relative aspect-square rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl cursor-pointer">
+              <video autoPlay loop muted playsInline className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <source src="/video2.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-slate-900 px-6 py-3 rounded-full font-bold text-sm shadow-xl">
+                  SEO & Dashboard Analytics 📈
+                </span>
+              </div>
+            </motion.div>
+
           </motion.div>
         </div>
       </section>
 
       {/* PRICING SECTION */}
-      <section id="pricing" className="py-24 px-6 max-w-7xl mx-auto">
-        <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
-          className="text-center mb-16"
-        >
-          <h3 className="text-3xl font-bold mb-4 text-slate-900">Services & Pricing</h3>
-          <p className="text-slate-600">Transparent packages tailored for your growth.</p>
-        </motion.div>
-
-        <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {/* Starter Plan */}
-          <motion.div variants={fadeInUp} className="p-8 bg-white border border-slate-200 rounded-3xl flex flex-col shadow-sm hover:shadow-xl transition-shadow duration-300">
-            <h4 className="text-xl font-bold mb-2 text-slate-900">1️⃣ Starter Plan</h4>
-            <p className="text-sm text-slate-500 mb-6">Perfect for startups & local businesses</p>
-            <div className="text-4xl font-extrabold mb-8 text-slate-900">₹999<span className="text-lg text-slate-400 font-medium">/mo</span></div>
-            <ul className="space-y-4 mb-8 flex-grow">
-              {['Logo Design', '4 Social Media Posts', '1 Reel', 'Basic Branding Support', 'Account Setup Assistance'].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-700">
-                  <span className="text-red-500 mt-0.5">✔</span> {item}
-                </li>
-              ))}
-            </ul>
-            <a href="#contact" className="w-full block text-center bg-slate-100 text-slate-900 hover:bg-slate-200 py-3 rounded-xl font-bold transition-colors">Choose Starter</a>
-          </motion.div>
-
-          {/* Growth Plan - Highlighted */}
+      <section id="pricing" className="py-32 px-6 max-w-7xl mx-auto">
+        <div className="w-full">
           <motion.div 
-            variants={fadeInUp} 
-            className="p-8 bg-red-50 border-2 border-red-500 rounded-3xl flex flex-col relative md:-translate-y-4 shadow-xl shadow-red-500/10 hover:shadow-2xl hover:shadow-red-500/20 transition-shadow duration-300"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
+            className="text-center mb-20"
           >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-5 py-1.5 rounded-full text-sm font-bold shadow-md">Recommended</div>
-            <h4 className="text-xl font-bold mb-2 text-red-950">2️⃣ Growth Plan</h4>
-            <p className="text-sm text-red-700/80 mb-6">For businesses looking to grow online</p>
-            <div className="text-4xl font-extrabold mb-8 text-red-950">₹2,499<span className="text-lg text-red-700/60 font-medium">/mo</span></div>
-            <ul className="space-y-4 mb-8 flex-grow">
-              {['Professional Logo', '8 Social Media Posts', '2 Reels', 'Social Media Management', 'Caption & Hashtag Support'].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-red-900">
-                  <span className="text-red-600 mt-0.5">✔</span> {item}
-                </li>
-              ))}
-            </ul>
-            <a href="#contact" className="w-full block text-center bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-colors shadow-lg shadow-red-600/30">Choose Growth</a>
+            <h3 className="text-3xl font-bold mb-4 text-slate-900">Services & Pricing</h3>
+            <p className="text-slate-600">Transparent packages tailored for your growth.</p>
           </motion.div>
 
-          {/* Premium Plan */}
-          <motion.div variants={fadeInUp} className="p-8 bg-white border border-slate-200 rounded-3xl flex flex-col shadow-sm hover:shadow-xl transition-shadow duration-300">
-            <h4 className="text-xl font-bold mb-2 text-slate-900">3️⃣ Premium Plan</h4>
-            <p className="text-sm text-slate-500 mb-6">Complete business growth package</p>
-            <div className="text-4xl font-extrabold mb-8 text-slate-900">₹4,999<span className="text-lg text-slate-400 font-medium">/mo</span></div>
-            <ul className="space-y-4 mb-8 flex-grow">
-              {['Complete Brand Identity', '15 Creative Posts', '4 Reels', 'Full Account Management', 'Ad Campaign Support', 'Monthly Growth Strategy'].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-700">
-                  <span className="text-red-500 mt-0.5">✔</span> {item}
-                </li>
-              ))}
-            </ul>
-            <a href="#contact" className="w-full block text-center bg-slate-100 text-slate-900 hover:bg-slate-200 py-3 rounded-xl font-bold transition-colors">Choose Premium</a>
-          </motion.div>
-        </motion.div>
-      </section>
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
+          >
+            {/* Starter Plan */}
+            <motion.div variants={fadeInUp} className="p-8 bg-white border border-slate-200 rounded-3xl flex flex-col shadow-sm hover:shadow-xl transition-shadow duration-300">
+              <h4 className="text-xl font-bold mb-2 text-slate-900">1️⃣ Starter Plan</h4>
+              <p className="text-sm text-slate-500 mb-6">Perfect for startups & local businesses</p>
+              <div className="text-4xl font-extrabold mb-8 text-slate-900">₹999<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+              <ul className="space-y-4 mb-8 flex-grow">
+                {['Logo Design', '4 Social Media Posts', '1 Reel', 'Basic Branding Support', 'Account Setup Assistance'].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-700">
+                    <span className="text-red-500 mt-0.5">✔</span> {item}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" className="w-full block text-center bg-slate-100 text-slate-900 hover:bg-slate-200 py-3 rounded-xl font-bold transition-colors">Choose Starter</a>
+            </motion.div>
 
-      {/* ADDITIONAL SERVICES */}
-      <section className="py-16 bg-slate-100 border-t border-slate-200 overflow-hidden">
-        <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-          className="max-w-4xl mx-auto px-6 text-center"
-        >
-          <h3 className="text-2xl font-bold mb-8 text-slate-900">🎯 Additional Services</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {['Business Registration', 'Website Development', 'Visiting Card Design', 'Menu / Brochure Design', 'Professional Video Editing', 'Paid Ads Setup'].map((item, i) => (
-              <motion.span 
-                key={i} 
-                whileHover={{ scale: 1.05, backgroundColor: "#fee2e2", borderColor: "#fca5a5" }}
-                className="px-4 py-2 bg-white border border-slate-200 rounded-full text-sm font-semibold text-slate-700 shadow-sm cursor-default transition-colors"
-              >
-                {item}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
+            {/* Growth Plan - Highlighted */}
+            <motion.div 
+              variants={fadeInUp} 
+              className="p-8 bg-red-50 border-2 border-red-500 rounded-3xl flex flex-col relative md:-translate-y-4 shadow-xl shadow-red-500/10 hover:shadow-2xl hover:shadow-red-500/20 transition-shadow duration-300"
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-5 py-1.5 rounded-full text-sm font-bold shadow-md">Recommended</div>
+              <h4 className="text-xl font-bold mb-2 text-red-950">2️⃣ Growth Plan</h4>
+              <p className="text-sm text-red-700/80 mb-6">For businesses looking to grow online</p>
+              <div className="text-4xl font-extrabold mb-8 text-red-950">₹2,499<span className="text-lg text-red-700/60 font-medium">/mo</span></div>
+              <ul className="space-y-4 mb-8 flex-grow">
+                {['Professional Logo', '8 Social Media Posts', '2 Reels', 'Social Media Management', 'Caption & Hashtag Support'].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-red-900">
+                    <span className="text-red-600 mt-0.5">✔</span> {item}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" className="w-full block text-center bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-colors shadow-lg shadow-red-600/30">Choose Growth</a>
+            </motion.div>
+
+            {/* Premium Plan */}
+            <motion.div variants={fadeInUp} className="p-8 bg-white border border-slate-200 rounded-3xl flex flex-col shadow-sm hover:shadow-xl transition-shadow duration-300">
+              <h4 className="text-xl font-bold mb-2 text-slate-900">3️⃣ Premium Plan</h4>
+              <p className="text-sm text-slate-500 mb-6">Complete business growth package</p>
+              <div className="text-4xl font-extrabold mb-8 text-slate-900">₹4,999<span className="text-lg text-slate-400 font-medium">/mo</span></div>
+              <ul className="space-y-4 mb-8 flex-grow">
+                {['Complete Brand Identity', '15 Creative Posts', '4 Reels', 'Full Account Management', 'Ad Campaign Support', 'Monthly Growth Strategy'].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-700">
+                    <span className="text-red-500 mt-0.5">✔</span> {item}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" className="w-full block text-center bg-slate-100 text-slate-900 hover:bg-slate-200 py-3 rounded-xl font-bold transition-colors">Choose Premium</a>
+            </motion.div>
+          </motion.div>
+
+          {/* CUSTOM PACKAGES CALLOUT BANNER */}
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
+            className="p-8 bg-white border border-slate-200 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div className="text-left max-w-2xl">
+              <h4 className="text-xl font-bold text-slate-900 mb-2">📩 Need a Custom Package?</h4>
+              <p className="text-slate-600 leading-relaxed">
+                Custom plans are entirely available according to your business requirements. Mix and match any capabilities to build your blueprint—final package pricing depends directly on the specific services chosen.
+              </p>
+            </div>
+            <a href="#contact" className="w-full md:w-auto text-center bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-md whitespace-nowrap">
+              Customize Your Plan
+            </a>
+          </motion.div>
+        </div>
       </section>
 
       {/* CONTACT / CTA SECTION */}
@@ -213,7 +315,6 @@ export default function Home() {
           </p>
           
           <form action="https://api.web3forms.com/submit" method="POST" className="bg-white p-8 rounded-3xl border border-slate-200 text-left flex flex-col gap-5 shadow-xl shadow-slate-200/50">
-            {/* Update with your Web3Forms Key! */}
             <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
