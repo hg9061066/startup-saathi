@@ -133,10 +133,12 @@ export default function Home() {
             </h1>
           </div>
           
+          {/* UPDATED: Blog link added to desktop navigation */}
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
             <a href="#services" className="hover:text-red-600 transition-colors">Services</a>
             <a href="#portfolio" className="hover:text-red-600 transition-colors">Portfolio</a>
             <a href="#pricing" className="hover:text-red-600 transition-colors">Pricing</a>
+            <a href="/blog" className="hover:text-red-600 transition-colors">Blog</a>
             <a href="#contact" className="hover:text-red-600 transition-colors">Contact</a>
           </div>
         </div>
@@ -487,6 +489,7 @@ export default function Home() {
             <ul className="space-y-4 font-medium text-sm">
               <li><a href="#services" className="hover:text-red-400 transition-colors">Our Services</a></li>
               <li><a href="#pricing" className="hover:text-red-400 transition-colors">Pricing Plans</a></li>
+              <li><a href="/blog" className="hover:text-red-400 transition-colors">Blog</a></li>
               <li><a href="#contact" className="hover:text-red-400 transition-colors">Contact Us</a></li>
             </ul>
           </div>
